@@ -7,12 +7,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class Bird {
 
-    int x, y;
+    int x;
+    float y;
     int width, height;
-
-    int speed;
-    int jumpHeight;
-    final int maxHeightOfJump = 100;
+    private float speedY;
+    private static final float gravity = -800f;
     boolean jump = true;
 
     int frameCounter;
@@ -21,7 +20,7 @@ public class Bird {
     public Bird(int x, int y, int speed, int width, int height) {
         this.x = x;
         this.y = y;
-        this.speed = speed;
+        this.speedY = speedY;
         this.width = width;
         this.height = height;
         frameCounter = 0;
@@ -33,26 +32,17 @@ public class Bird {
             new Texture("birdTiles/bird1.png"),
         };
     }
-
     public void setY(int y) {
         this.y = y;
     }
 
     public void onClick() {
-        jump = true;
-        jumpHeight = maxHeightOfJump + y;
+        speedY = 350f;
     }
-
-    public void fly() {
-        if (y >= jumpHeight) {
-            jump = false;
-        }
-
-        if (jump) {
-            y += speed;
-        } else {
-            y -= speed;
-        }
+    public void fly(float delta) {
+        speedY += gravity * delta;
+        y += speedY * delta;
+        if (y + height< 0) { speedY = 0; }
     }
 
     public boolean isInField() {

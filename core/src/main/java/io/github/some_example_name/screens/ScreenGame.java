@@ -61,7 +61,7 @@ public class ScreenGame implements Screen {
         }
 
         background.move();
-        bird.fly();
+        bird.fly(delta);
         if (!bird.isInField()) {
             System.out.println("not in field");
             isGameOver = true;
