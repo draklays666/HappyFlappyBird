@@ -5,6 +5,8 @@ import static io.github.some_example_name.MyGdxGame.SCR_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import io.github.some_example_name.MyGdxGame;
@@ -19,6 +21,7 @@ public class ScreenGame implements Screen {
     final int pointCounterMarginRight = 400;
 
     MyGdxGame myGdxGame;
+    ShapeRenderer shapeRenderer;
 
     Bird bird;
     PointCounter pointCounter;
@@ -54,6 +57,7 @@ public class ScreenGame implements Screen {
         if (isGameOver) {
             myGdxGame.screenRestart.gamePoints = gamePoints;
             myGdxGame.setScreen(myGdxGame.screenRestart);
+            bird.setSpeedY();
         }
 
         if (Gdx.input.justTouched()) {
@@ -67,7 +71,7 @@ public class ScreenGame implements Screen {
             isGameOver = true;
         }
         for (Tube tube : tubes) {
-            tube.move();
+            tube.move(delta);
             if (tube.isHit(bird)) {
                 isGameOver = true;
                 System.out.println("hit");

@@ -20,7 +20,7 @@ public class Tube {
 
     boolean isPointReceived;
 
-    int speed = 17;
+    int speed = 1100;
     final int width = 200;
     final int height = 700;
     int gapHeight = 400;
@@ -44,8 +44,8 @@ public class Tube {
         batch.draw(textureDownTube, x, gapY - gapHeight / 2 - height, width, height);
     }
 
-    public void move() {
-        x -= speed;
+    public void move(float delta) {
+        x -= speed * delta;
         if (x < -width) {
             isPointReceived = false;
             x = SCR_WIDTH + distanceBetweenTubes;

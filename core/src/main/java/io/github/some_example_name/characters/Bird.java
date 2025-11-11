@@ -5,24 +5,28 @@ import static io.github.some_example_name.MyGdxGame.SCR_HEIGHT;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
+import java.awt.Rectangle;
+
 public class Bird {
 
     int x;
     float y;
     int width, height;
-    private float speedY;
+    float speedY;
     private static final float gravity = -800f;
-    boolean jump = true;
-
     int frameCounter;
     Texture[] framesArray;
+    private float bodyHitboxX, bodyHitboxY, bodyHitboxWidth, bodyHitboxHeight;
+
+    private float headHitboxX, headHitboxY, headHitboxWidth, headHitboxHeight;
 
     public Bird(int x, int y, int speed, int width, int height) {
         this.x = x;
         this.y = y;
-        this.speedY = speedY;
+        this.speedY = speed;
         this.width = width;
         this.height = height;
+
         frameCounter = 0;
 
         framesArray = new Texture[]{
@@ -39,10 +43,12 @@ public class Bird {
     public void onClick() {
         speedY = 350f;
     }
+    public void setSpeedY() {
+        this.speedY = 0f;
+    }
     public void fly(float delta) {
         speedY += gravity * delta;
         y += speedY * delta;
-        if (y + height< 0) { speedY = 0; }
     }
 
     public boolean isInField() {
