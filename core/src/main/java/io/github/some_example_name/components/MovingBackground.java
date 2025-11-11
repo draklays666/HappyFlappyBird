@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 import io.github.some_example_name.MyGdxGame;
 
-public class MovingBackground {
+public class    MovingBackground {
 
     Texture texture;
 

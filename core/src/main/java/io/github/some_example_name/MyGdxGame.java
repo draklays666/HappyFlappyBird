@@ -1,12 +1,14 @@
 package io.github.some_example_name;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import io.github.some_example_name.screens.ScreenGame;
 import io.github.some_example_name.screens.ScreenMenu;
 import io.github.some_example_name.screens.ScreenRestart;
+import io.github.some_example_name.screens.ScreenShop;
 
 public class MyGdxGame extends Game {
 
@@ -19,6 +21,7 @@ public class MyGdxGame extends Game {
     public ScreenGame screenGame;
     public ScreenMenu screenMenu;
     public ScreenRestart screenRestart;
+    public Screen screenShop;
 
     @Override
     public void create() {
@@ -29,6 +32,7 @@ public class MyGdxGame extends Game {
         screenGame = new ScreenGame(this);
         screenMenu = new ScreenMenu(this);
         screenRestart = new ScreenRestart(this);
+        screenShop = new ScreenShop(this);
 
         setScreen(screenMenu);
     }

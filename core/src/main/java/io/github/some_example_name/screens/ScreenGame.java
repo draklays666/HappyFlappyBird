@@ -6,6 +6,7 @@ import static io.github.some_example_name.MyGdxGame.SCR_WIDTH;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -32,9 +33,12 @@ public class ScreenGame implements Screen {
 
     int gamePoints;
     boolean isGameOver;
+    private BitmapFont font;
 
     public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
+
+        font = new BitmapFont();
 
         initTubes();
         background = new MovingBackground("backgrounds/game_bg.png");
@@ -92,6 +96,8 @@ public class ScreenGame implements Screen {
         for (Tube tube : tubes) tube.draw(myGdxGame.batch);
         pointCounter.draw(myGdxGame.batch, gamePoints);
 
+        font.draw(myGdxGame.batch, "fps " + Gdx.graphics.getFramesPerSecond(), 10, SCR_HEIGHT - 10);
+
         myGdxGame.batch.end();
     }
 
@@ -123,6 +129,7 @@ public class ScreenGame implements Screen {
         for (int i = 0; i < tubeCount; i++) {
             tubes[i].dispose();
         }
+        font.dispose();
     }
 
     void initTubes() {

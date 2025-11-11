@@ -24,6 +24,8 @@ public class TextButton {
         this.x = x;
         this.y = y;
 
+
+
         font = new BitmapFont();
         font.getData().scale(5f);
         font.setColor(Color.WHITE);
@@ -33,8 +35,8 @@ public class TextButton {
         textHeight = (int) gl.height;
 
         texture = new Texture("button_bg.png");
-        buttonWidth = texture.getWidth();
-        buttonHeight = texture.getHeight();
+        this.buttonWidth = texture.getWidth();
+        this.buttonHeight = texture.getHeight();
 
         textX = x + (buttonWidth - textWidth) / 2;
         textY = y + (buttonHeight + textHeight) / 2;
