@@ -14,12 +14,12 @@ public class Bird {
     float y;
     int width, height;
     float speedY;
+
     private static final float gravity = -800f;
     int frameCounter;
     Texture[] framesArray;
     MyGdxGame myGdxGame;
     int frameMultiplier = 10;
-    private MyGdxGame game;
 
     public Bird(MyGdxGame game,int x, int y, int speed, int width, int height) {
         this.myGdxGame = game;
@@ -29,15 +29,15 @@ public class Bird {
         this.width = width;
         this.height = height;
         frameCounter = 0;
+        skinChange();
     }
 
-    public Texture[] skinChange(){
+    public Texture[] skinChange() {
         if ("ufo".equals(myGdxGame.selectedBirdSkin)) {
             framesArray = new Texture[]{
                 new Texture("birdTiles/ufo/ufo.png"),
-
             };
-        } else if ("default".equals(myGdxGame.selectedBirdSkin)){
+        } else if ("default".equals(myGdxGame.selectedBirdSkin)) {
             framesArray = new Texture[]{
                 new Texture("birdTiles/default/bird0.png"),
                 new Texture("birdTiles/default/bird1.png"),
@@ -45,10 +45,7 @@ public class Bird {
                 new Texture("birdTiles/default/bird1.png")
             };
         }
-        if (frameCounter++ == framesArray.length * frameMultiplier - 1) frameCounter = 0;
         return framesArray;
-
-
     }
     public void setY(int y) {
         this.y = y;
@@ -72,8 +69,8 @@ public class Bird {
     }
 
     public void draw(Batch batch) {
-        batch.draw(skinChange()[frameCounter / frameMultiplier], x, y, width, height);
-
+        if (frameCounter++ == framesArray.length * frameMultiplier - 1) frameCounter = 0;
+        batch.draw(framesArray[frameCounter / frameMultiplier], x, y, width, height);
     }
 
     public void dispose() {

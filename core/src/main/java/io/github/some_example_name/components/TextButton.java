@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 
 public class TextButton {
 
@@ -23,6 +24,7 @@ public class TextButton {
         this.text = text;
         this.x = x;
         this.y = y;
+
 
 
 

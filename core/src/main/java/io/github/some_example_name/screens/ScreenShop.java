@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import io.github.some_example_name.MyGdxGame;
+import io.github.some_example_name.characters.Bird;
 import io.github.some_example_name.components.MovingBackground;
 import io.github.some_example_name.components.TextButton;
 
@@ -26,6 +27,7 @@ public class ScreenShop implements Screen {
     TextButton buttonUfo;
     Texture skin1;
     Texture skin2;
+    private Bird Bird;
 
     public ScreenShop(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;

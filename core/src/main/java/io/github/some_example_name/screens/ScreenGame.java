@@ -49,13 +49,13 @@ public class ScreenGame implements Screen {
         gameMusic.setLooping(true);
         gameMusic.setVolume(0.3f);
         background = new MovingBackground("backgrounds/game_bg.png");
-        bird = new Bird(myGdxGame,20, SCR_HEIGHT / 2, 10, 250, 200);
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
     }
 
 
     @Override
     public void show() {
+        bird = new Bird(myGdxGame,20, SCR_HEIGHT / 2, 10, 250, 200);
         gamePoints = 0;
         isGameOver = false;
         bird.setY(SCR_HEIGHT / 2);

@@ -1,13 +1,17 @@
 package io.github.some_example_name.screens;
 
 
+import static io.github.some_example_name.MyGdxGame.SCR_HEIGHT;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 
 import io.github.some_example_name.MyGdxGame;
+import io.github.some_example_name.characters.Bird;
 import io.github.some_example_name.components.MovingBackground;
 import io.github.some_example_name.components.TextButton;
 
@@ -19,14 +23,18 @@ public class ScreenMenu implements Screen {
     TextButton buttonStart;
     TextButton buttonExit;
     TextButton buttonShop;
+    Texture logo;
+    Bird bird;
 
     public ScreenMenu(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
 
-        buttonStart = new TextButton(80, 520, "Start");
-        buttonExit = new TextButton(80, 130, "Exit");
-        buttonShop = new TextButton(80, 400, "Skins");
+        buttonStart = new TextButton(80, 500, "Start");
+        buttonExit = new TextButton(80, 110, "Exit");
+        buttonShop = new TextButton(80, 370, "Skins");
         background = new MovingBackground("backgrounds/restart_bg.png");
+        logo = new Texture("backgrounds/logo.png");
+        bird = new Bird(myGdxGame,730, 245, 0, 250, 200);
     }
 
     @Override
@@ -56,9 +64,11 @@ public class ScreenMenu implements Screen {
         myGdxGame.batch.begin();
 
         background.draw(myGdxGame.batch);
+        bird.draw(myGdxGame.batch);
         buttonStart.draw(myGdxGame.batch);
         buttonExit.draw(myGdxGame.batch);
         buttonShop.draw(myGdxGame.batch);
+        myGdxGame.batch.draw(logo, 600,470);
 
         myGdxGame.batch.end();
     }
@@ -89,5 +99,7 @@ public class ScreenMenu implements Screen {
         buttonExit.dispose();
         buttonStart.dispose();
         buttonShop.dispose();
+        logo.dispose();
+        bird.dispose();
     }
 }
