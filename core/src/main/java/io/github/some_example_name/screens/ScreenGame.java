@@ -8,6 +8,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -38,6 +39,8 @@ public class ScreenGame implements Screen {
     private BitmapFont font;
     Sound deathSound = Gdx.audio.newSound(Gdx.files.internal("sounds/death.mp3"));
     Music gameMusic;
+    boolean selectedBG = true;
+    private Object pathToTexture;
 
     public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
@@ -49,6 +52,7 @@ public class ScreenGame implements Screen {
         gameMusic.setLooping(true);
         gameMusic.setVolume(0.3f);
         background = new MovingBackground("backgrounds/game_bg.png");
+
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
     }
 
@@ -93,6 +97,14 @@ public class ScreenGame implements Screen {
                 gamePoints += 1;
                 tube.setPointReceived();
                 System.out.println(gamePoints);
+                if (gamePoints % 10 == 0) {
+                    int nextChangeBG = gamePoints + 20;
+                    background.changeBG("backgrounds/night_bg.png");
+                    if (gamePoints == nextChangeBG){
+                        background.changeBG("backgrounds/game_bg.png");
+                        nextChangeBG = 0;
+                    }
+                }
             }
         }
 
