@@ -23,6 +23,11 @@ public class MyGdxGame extends Game {
     public ScreenRestart screenRestart;
     public Screen screenShop;
 
+    public static final String SKIN_DEFAULT = "default";
+    public static final String SKIN_UFO = "ufo";
+
+    public String selectedBirdSkin = SKIN_DEFAULT;
+
     @Override
     public void create() {
         batch = new SpriteBatch();

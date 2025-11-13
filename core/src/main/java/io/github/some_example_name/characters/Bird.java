@@ -5,7 +5,8 @@ import static io.github.some_example_name.MyGdxGame.SCR_HEIGHT;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
-import java.awt.Rectangle;
+import io.github.some_example_name.MyGdxGame;
+
 
 public class Bird {
 
@@ -16,25 +17,38 @@ public class Bird {
     private static final float gravity = -800f;
     int frameCounter;
     Texture[] framesArray;
-    private float bodyHitboxX, bodyHitboxY, bodyHitboxWidth, bodyHitboxHeight;
+    MyGdxGame myGdxGame;
+    int frameMultiplier = 10;
+    private MyGdxGame game;
 
-    private float headHitboxX, headHitboxY, headHitboxWidth, headHitboxHeight;
-
-    public Bird(int x, int y, int speed, int width, int height) {
+    public Bird(MyGdxGame game,int x, int y, int speed, int width, int height) {
+        this.myGdxGame = game;
         this.x = x;
         this.y = y;
         this.speedY = speed;
         this.width = width;
         this.height = height;
-
         frameCounter = 0;
+    }
 
-        framesArray = new Texture[]{
-            new Texture("birdTiles/bird0.png"),
-            new Texture("birdTiles/bird1.png"),
-            new Texture("birdTiles/bird2.png"),
-            new Texture("birdTiles/bird1.png"),
-        };
+    public Texture[] skinChange(){
+        if ("ufo".equals(myGdxGame.selectedBirdSkin)) {
+            framesArray = new Texture[]{
+                new Texture("birdTiles/ufo/ufo.png"),
+
+            };
+        } else if ("default".equals(myGdxGame.selectedBirdSkin)){
+            framesArray = new Texture[]{
+                new Texture("birdTiles/default/bird0.png"),
+                new Texture("birdTiles/default/bird1.png"),
+                new Texture("birdTiles/default/bird2.png"),
+                new Texture("birdTiles/default/bird1.png")
+            };
+        }
+        if (frameCounter++ == framesArray.length * frameMultiplier - 1) frameCounter = 0;
+        return framesArray;
+
+
     }
     public void setY(int y) {
         this.y = y;
@@ -58,9 +72,8 @@ public class Bird {
     }
 
     public void draw(Batch batch) {
-        int frameMultiplier = 10;
-        batch.draw(framesArray[frameCounter / frameMultiplier], x, y, width, height);
-        if (frameCounter++ == framesArray.length * frameMultiplier - 1) frameCounter = 0;
+        batch.draw(skinChange()[frameCounter / frameMultiplier], x, y, width, height);
+
     }
 
     public void dispose() {

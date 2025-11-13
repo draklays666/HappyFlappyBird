@@ -35,11 +35,24 @@ public class TextButton {
         textHeight = (int) gl.height;
 
         texture = new Texture("button_bg.png");
-        this.buttonWidth = texture.getWidth();
-        this.buttonHeight = texture.getHeight();
+        this.buttonWidth = 385;
+        this.buttonHeight = 100;
 
         textX = x + (buttonWidth - textWidth) / 2;
         textY = y + (buttonHeight + textHeight) / 2;
+    }
+    public void changeText(String text) {
+        this.text = text;
+
+    }
+    public void changePos(int textX, int textY) {
+        this.textX = textX;
+        this.textY = textY;
+        GlyphLayout gl = new GlyphLayout(font, text);
+        textWidth = (int) gl.width;
+        textHeight = (int) gl.height;
+        this.textX = x + (buttonWidth - textWidth) / 2;
+        this.textY = y + (buttonHeight + textHeight) / 2;
     }
 
     public boolean isHit(int tx, int ty) {

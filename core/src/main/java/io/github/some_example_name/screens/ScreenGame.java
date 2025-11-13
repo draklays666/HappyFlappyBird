@@ -5,6 +5,8 @@ import static io.github.some_example_name.MyGdxGame.SCR_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -34,6 +36,8 @@ public class ScreenGame implements Screen {
     int gamePoints;
     boolean isGameOver;
     private BitmapFont font;
+    Sound deathSound = Gdx.audio.newSound(Gdx.files.internal("sounds/death.mp3"));
+    Music gameMusic;
 
     public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
@@ -41,8 +45,11 @@ public class ScreenGame implements Screen {
         font = new BitmapFont();
 
         initTubes();
+        gameMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/theoryOE.mp3"));
+        gameMusic.setLooping(true);
+        gameMusic.setVolume(0.3f);
         background = new MovingBackground("backgrounds/game_bg.png");
-        bird = new Bird(20, SCR_HEIGHT / 2, 10, 250, 200);
+        bird = new Bird(myGdxGame,20, SCR_HEIGHT / 2, 10, 250, 200);
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
     }
 
@@ -53,6 +60,7 @@ public class ScreenGame implements Screen {
         isGameOver = false;
         bird.setY(SCR_HEIGHT / 2);
         initTubes();
+        gameMusic.play();
     }
 
     @Override
@@ -77,8 +85,10 @@ public class ScreenGame implements Screen {
         for (Tube tube : tubes) {
             tube.move(delta);
             if (tube.isHit(bird)) {
+                deathSound.play();
                 isGameOver = true;
                 System.out.println("hit");
+                gameMusic.stop();
             } else if (tube.needAddPoint(bird)) {
                 gamePoints += 1;
                 tube.setPointReceived();
@@ -130,6 +140,8 @@ public class ScreenGame implements Screen {
             tubes[i].dispose();
         }
         font.dispose();
+        deathSound.dispose();
+        gameMusic.dispose();
     }
 
     void initTubes() {

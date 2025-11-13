@@ -23,9 +23,9 @@ public class ScreenMenu implements Screen {
     public ScreenMenu(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
 
-        buttonStart = new TextButton(100, 400, "Start");
-        buttonExit = new TextButton(700, 400, "Exit");
-        buttonShop = new TextButton(100, 150, "Shop");
+        buttonStart = new TextButton(80, 520, "Start");
+        buttonExit = new TextButton(80, 130, "Exit");
+        buttonShop = new TextButton(80, 400, "Skins");
         background = new MovingBackground("backgrounds/restart_bg.png");
     }
 
