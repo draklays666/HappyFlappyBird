@@ -8,6 +8,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -24,7 +25,6 @@ public class ScreenGame implements Screen {
     final int pointCounterMarginRight = 400;
 
     MyGdxGame myGdxGame;
-    ShapeRenderer shapeRenderer;
 
     Bird bird;
     PointCounter pointCounter;
@@ -49,6 +49,7 @@ public class ScreenGame implements Screen {
         gameMusic.setLooping(true);
         gameMusic.setVolume(0.3f);
         background = new MovingBackground("backgrounds/game_bg.png");
+
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
     }
 

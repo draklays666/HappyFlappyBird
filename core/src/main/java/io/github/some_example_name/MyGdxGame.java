@@ -25,6 +25,7 @@ public class MyGdxGame extends Game {
 
     public static final String SKIN_DEFAULT = "default";
     public static final String SKIN_UFO = "ufo";
+    public static final String SKIN_GOLUB = "pigeon";
 
     public String selectedBirdSkin = SKIN_DEFAULT;
 

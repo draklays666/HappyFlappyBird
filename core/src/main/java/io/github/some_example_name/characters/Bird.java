@@ -37,12 +37,19 @@ public class Bird {
             framesArray = new Texture[]{
                 new Texture("birdTiles/ufo/ufo.png"),
             };
-        } else if ("default".equals(myGdxGame.selectedBirdSkin)) {
+        } if ("default".equals(myGdxGame.selectedBirdSkin)) {
             framesArray = new Texture[]{
                 new Texture("birdTiles/default/bird0.png"),
                 new Texture("birdTiles/default/bird1.png"),
                 new Texture("birdTiles/default/bird2.png"),
                 new Texture("birdTiles/default/bird1.png")
+            };
+        } if ("pigeon".equals(myGdxGame.selectedBirdSkin)) {
+            framesArray = new Texture[]{
+                new Texture("birdTiles/pigeon/golub1.png"),
+                new Texture("birdTiles/pigeon/golub2.png"),
+                new Texture("birdTiles/pigeon/golub3.png"),
+                new Texture("birdTiles/pigeon/golub2.png")
             };
         }
         return framesArray;

@@ -25,8 +25,10 @@ public class ScreenShop implements Screen {
     TextButton buttonExitS;
     TextButton buttonDefault;
     TextButton buttonUfo;
+    TextButton buttonGolub;
     Texture skin1;
     Texture skin2;
+    Texture skin3;
     private Bird Bird;
 
     public ScreenShop(MyGdxGame myGdxGame) {
@@ -36,11 +38,13 @@ public class ScreenShop implements Screen {
 
         buttonExitS = new TextButton(800, 50, "Exit");
         buttonDefault = new TextButton(45, 230, "Default");
-        buttonUfo = new TextButton(475,230, "Ufo");
+        buttonUfo = new TextButton(465,230, "Ufo");
+        buttonGolub = new TextButton(885, 230, "Pigeon");
         buttonSelected = new TextButton(45, 230, "Selected");
 
         skin1 = new Texture("birdTiles/default/bird1.png");
         skin2 = new Texture("birdTiles/ufo/ufo.png");
+        skin3 = new Texture("birdTiles/pigeon/golub3.png");
     }
 
 
@@ -66,6 +70,9 @@ public class ScreenShop implements Screen {
                 myGdxGame.selectedBirdSkin = MyGdxGame.SKIN_UFO;
 
             }
+            if (buttonGolub.isHit((int) touch.x, (int) touch.y)) {
+                myGdxGame.selectedBirdSkin = MyGdxGame.SKIN_GOLUB;
+            }
 
 
         }
@@ -77,8 +84,10 @@ public class ScreenShop implements Screen {
             background.draw(myGdxGame.batch);
             buttonExitS.draw(myGdxGame.batch);
             buttonUfo.draw(myGdxGame.batch);
+            buttonGolub.draw(myGdxGame.batch);
             myGdxGame.batch.draw(skin1,45,410); // texture
-            myGdxGame.batch.draw(skin2,475,410);
+            myGdxGame.batch.draw(skin2,465,410);
+            myGdxGame.batch.draw(skin3,855,380);
             buttonDefault.draw(myGdxGame.batch);
 
 
@@ -87,13 +96,25 @@ public class ScreenShop implements Screen {
                 buttonUfo.changePos(475,230);
                 buttonDefault.changeText("Default");
                 buttonDefault.changePos(45,230);
+                buttonGolub.changeText("Pigeon");
+                buttonGolub.changePos(885, 230);
 
-            } else if (myGdxGame.selectedBirdSkin.equals(MyGdxGame.SKIN_DEFAULT)) {
+
+            } if (myGdxGame.selectedBirdSkin.equals(MyGdxGame.SKIN_DEFAULT)) {
                 buttonDefault.changeText("Selected");
                 buttonDefault.changePos(45,230);
                 buttonUfo.changeText("Ufo");
                 buttonUfo.changePos(475,230);
+                buttonGolub.changeText("Pigeon");
+                buttonGolub.changePos(885, 230);
 
+            } if (myGdxGame.selectedBirdSkin.equals(MyGdxGame.SKIN_GOLUB)) {
+                buttonDefault.changeText("Default");
+                buttonDefault.changePos(45,230);
+                buttonUfo.changeText("Ufo");
+                buttonUfo.changePos(475,230);
+                buttonGolub.changeText("Selected");
+                buttonGolub.changePos(885, 230);
             }
 
 
@@ -129,6 +150,7 @@ public class ScreenShop implements Screen {
         buttonExitS.dispose();
         buttonDefault.dispose();
         buttonSelected.dispose();
+        buttonGolub.dispose();
         skin1.dispose();
         buttonUfo.dispose();
     }

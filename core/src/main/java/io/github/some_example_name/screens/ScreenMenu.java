@@ -39,7 +39,6 @@ public class ScreenMenu implements Screen {
 
     @Override
     public void show() {
-
     }
 
     @Override
@@ -68,7 +67,7 @@ public class ScreenMenu implements Screen {
         buttonStart.draw(myGdxGame.batch);
         buttonExit.draw(myGdxGame.batch);
         buttonShop.draw(myGdxGame.batch);
-        myGdxGame.batch.draw(logo, 600,470);
+        myGdxGame.batch.draw(logo, 600,490);
 
         myGdxGame.batch.end();
     }
