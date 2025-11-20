@@ -46,10 +46,12 @@ public class Bird {
             };
         } if ("pigeon".equals(myGdxGame.selectedBirdSkin)) {
             framesArray = new Texture[]{
-                new Texture("birdTiles/pigeon/golub1.png"),
-                new Texture("birdTiles/pigeon/golub2.png"),
-                new Texture("birdTiles/pigeon/golub3.png"),
-                new Texture("birdTiles/pigeon/golub2.png")
+
+                new Texture("birdTiles/pigeon/riba.png")
+                //new Texture("birdTiles/pigeon/golub1.png"),
+                //new Texture("birdTiles/pigeon/golub2.png"),
+                //new Texture("birdTiles/pigeon/golub3.png"),
+                //new Texture("birdTiles/pigeon/golub2.png")
             };
         }
         return framesArray;
