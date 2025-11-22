@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import io.github.some_example_name.components.GameSettings;
 import io.github.some_example_name.screens.ScreenGame;
 import io.github.some_example_name.screens.ScreenMenu;
 import io.github.some_example_name.screens.ScreenRestart;
@@ -34,6 +35,8 @@ public class MyGdxGame extends Game {
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCR_WIDTH, SCR_HEIGHT);
+
+        selectedBirdSkin = GameSettings.getSelectedSkin();
 
         screenGame = new ScreenGame(this);
         screenMenu = new ScreenMenu(this);

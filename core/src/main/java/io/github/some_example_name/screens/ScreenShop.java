@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 import io.github.some_example_name.MyGdxGame;
 import io.github.some_example_name.characters.Bird;
+import io.github.some_example_name.components.GameSettings;
 import io.github.some_example_name.components.MovingBackground;
 import io.github.some_example_name.components.TextButton;
 
@@ -36,7 +37,7 @@ public class ScreenShop implements Screen {
 
         background = new MovingBackground("backgrounds/bg_shop.png");
 
-        buttonExitS = new TextButton(800, 50, "Exit");
+        buttonExitS = new TextButton(885, 50, "Exit");
         buttonDefault = new TextButton(45, 230, "Default");
         buttonUfo = new TextButton(465,230, "Ufo");
         buttonGolub = new TextButton(885, 230, "Pigeon");
@@ -44,7 +45,7 @@ public class ScreenShop implements Screen {
 
         skin1 = new Texture("birdTiles/default/bird1.png");
         skin2 = new Texture("birdTiles/ufo/ufo.png");
-        skin3 = new Texture("birdTiles/pigeon/golub3.png");
+        skin3 = new Texture("birdTiles/pigeon/1.png");
     }
 
 
@@ -65,13 +66,16 @@ public class ScreenShop implements Screen {
             }
             if (buttonDefault.isHit((int) touch.x, (int) touch.y)) {
                 myGdxGame.selectedBirdSkin = MyGdxGame.SKIN_DEFAULT;
+                GameSettings.setSelectedSkin(MyGdxGame.SKIN_DEFAULT);
             }
             if (buttonUfo.isHit((int) touch.x, (int) touch.y)) {
                 myGdxGame.selectedBirdSkin = MyGdxGame.SKIN_UFO;
+                GameSettings.setSelectedSkin(MyGdxGame.SKIN_UFO);
 
             }
             if (buttonGolub.isHit((int) touch.x, (int) touch.y)) {
                 myGdxGame.selectedBirdSkin = MyGdxGame.SKIN_GOLUB;
+                GameSettings.setSelectedSkin(MyGdxGame.SKIN_GOLUB);
             }
 
 
@@ -87,7 +91,7 @@ public class ScreenShop implements Screen {
             buttonGolub.draw(myGdxGame.batch);
             myGdxGame.batch.draw(skin1,45,410); // texture
             myGdxGame.batch.draw(skin2,465,410);
-            myGdxGame.batch.draw(skin3,855,380);
+            myGdxGame.batch.draw(skin3,880,400);
             buttonDefault.draw(myGdxGame.batch);
 
 

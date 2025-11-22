@@ -29,6 +29,7 @@ public class ScreenGame implements Screen {
     Bird bird;
     PointCounter pointCounter;
     MovingBackground background;
+    private ShapeRenderer debugRenderer;
 
     int tubeCount = 3;
     Tube[] tubes;
@@ -51,6 +52,7 @@ public class ScreenGame implements Screen {
         background = new MovingBackground("backgrounds/game_bg.png");
 
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
+        debugRenderer = new ShapeRenderer();
     }
 
 
@@ -71,6 +73,8 @@ public class ScreenGame implements Screen {
             myGdxGame.screenRestart.gamePoints = gamePoints;
             myGdxGame.setScreen(myGdxGame.screenRestart);
             bird.setSpeedY();
+            deathSound.play();
+            gameMusic.stop();
         }
 
         if (Gdx.input.justTouched()) {
@@ -86,10 +90,8 @@ public class ScreenGame implements Screen {
         for (Tube tube : tubes) {
             tube.move(delta);
             if (tube.isHit(bird)) {
-                deathSound.play();
                 isGameOver = true;
                 System.out.println("hit");
-                gameMusic.stop();
             } else if (tube.needAddPoint(bird)) {
                 gamePoints += 1;
                 tube.setPointReceived();
@@ -110,6 +112,11 @@ public class ScreenGame implements Screen {
         font.draw(myGdxGame.batch, "fps " + Gdx.graphics.getFramesPerSecond(), 10, SCR_HEIGHT - 10);
 
         myGdxGame.batch.end();
+        // hitboxShow
+        //debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+        //bird.debugDraw(debugRenderer);
+        //debugRenderer.end();
+
     }
 
     @Override
@@ -134,6 +141,7 @@ public class ScreenGame implements Screen {
 
     @Override
     public void dispose() {
+        debugRenderer.dispose();
         bird.dispose();
         background.dispose();
         pointCounter.dispose();

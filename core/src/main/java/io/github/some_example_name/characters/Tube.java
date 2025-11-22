@@ -5,6 +5,7 @@ import static io.github.some_example_name.MyGdxGame.SCR_WIDTH;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
@@ -55,14 +56,24 @@ public class Tube {
 
     public boolean isHit(Bird bird) {
 
-        // down tube collision
-        if (bird.y <= gapY - gapHeight / 2 && bird.x + bird.width >= x && bird.x <= x + width)
-            return true;
-        // upper tube collision
-        if (bird.y + bird.height >= gapY + gapHeight / 2 && bird.x + bird.width >= x && bird.x <= x + width)
-            return true;
+        Rectangle tubeLower = new Rectangle(
+            x,
+            0,
+            width,
+            gapY - gapHeight / 2f
+        );
 
-        return false;
+        Rectangle tubeUpper = new Rectangle(
+            x,
+            gapY + gapHeight / 2f,
+            width,
+            SCR_HEIGHT - (gapY + gapHeight / 2f)
+        );
+
+        return tubeLower.overlaps(bird.bodyHitbox) ||
+            tubeLower.overlaps(bird.headHitbox) ||
+            tubeUpper.overlaps(bird.bodyHitbox) ||
+            tubeUpper.overlaps(bird.headHitbox);
     }
 
     public boolean needAddPoint(Bird bird) {
