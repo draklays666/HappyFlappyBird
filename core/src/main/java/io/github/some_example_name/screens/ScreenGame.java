@@ -39,8 +39,6 @@ public class ScreenGame implements Screen {
     private BitmapFont font;
     Sound deathSound = Gdx.audio.newSound(Gdx.files.internal("sounds/death.mp3"));
     Music gameMusic;
-    boolean selectedBG = true;
-    private Object pathToTexture;
 
     public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
@@ -98,14 +96,6 @@ public class ScreenGame implements Screen {
                 gamePoints += 1;
                 tube.setPointReceived();
                 System.out.println(gamePoints);
-                if (gamePoints % 10 == 0) {
-                    int nextChangeBG = gamePoints + 20;
-                    background.changeBG("backgrounds/night_bg.png");
-                    if (gamePoints == nextChangeBG){
-                        background.changeBG("backgrounds/game_bg.png");
-                        nextChangeBG = 0;
-                    }
-                }
             }
         }
 
@@ -123,9 +113,9 @@ public class ScreenGame implements Screen {
 
         myGdxGame.batch.end();
         // hitboxShow
-        //debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        //bird.debugDraw(debugRenderer);
-        //debugRenderer.end();
+        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+        bird.debugDraw(debugRenderer);
+        debugRenderer.end();
 
     }
 

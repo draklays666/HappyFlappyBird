@@ -30,7 +30,6 @@ public class ScreenShop implements Screen {
     Texture skin1;
     Texture skin2;
     Texture skin3;
-    private Bird Bird;
 
     public ScreenShop(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
@@ -40,7 +39,7 @@ public class ScreenShop implements Screen {
         buttonExitS = new TextButton(885, 50, "Exit");
         buttonDefault = new TextButton(45, 230, "Default");
         buttonUfo = new TextButton(465,230, "Ufo");
-        buttonGolub = new TextButton(885, 230, "Pigeon");
+        buttonGolub = new TextButton(885, 230, "Red");
         buttonSelected = new TextButton(45, 230, "Selected");
 
         skin1 = new Texture("birdTiles/default/bird1.png");
@@ -100,7 +99,7 @@ public class ScreenShop implements Screen {
                 buttonUfo.changePos(475,230);
                 buttonDefault.changeText("Default");
                 buttonDefault.changePos(45,230);
-                buttonGolub.changeText("Pigeon");
+                buttonGolub.changeText("Red");
                 buttonGolub.changePos(885, 230);
 
 
@@ -109,7 +108,7 @@ public class ScreenShop implements Screen {
                 buttonDefault.changePos(45,230);
                 buttonUfo.changeText("Ufo");
                 buttonUfo.changePos(475,230);
-                buttonGolub.changeText("Pigeon");
+                buttonGolub.changeText("Red");
                 buttonGolub.changePos(885, 230);
 
             } if (myGdxGame.selectedBirdSkin.equals(MyGdxGame.SKIN_GOLUB)) {

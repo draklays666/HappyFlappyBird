@@ -71,9 +71,9 @@ public class Bird {
 
             headHitbox.set(
                 x + width * 0.29f,
-                y + height * 0.6f,
+                y + height * 0.6f - 4,
                 width * 0.4f,
-                height * 0.385f
+                height * 0.38f
             );
         } if ("default".equals(myGdxGame.selectedBirdSkin)){
             bodyHitbox.set(
