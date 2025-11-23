@@ -24,7 +24,6 @@ public class ScreenMenu implements Screen {
     TextButton buttonExit;
     TextButton buttonShop;
     Texture logo;
-    Bird bird;
 
     public ScreenMenu(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
@@ -34,7 +33,6 @@ public class ScreenMenu implements Screen {
         buttonShop = new TextButton(80, 370, "Skins");
         background = new MovingBackground("backgrounds/restart_bg.png");
         logo = new Texture("backgrounds/logo.png");
-        bird = new Bird(myGdxGame,730, 245, 0, 250, 200);
     }
 
     @Override
@@ -64,7 +62,6 @@ public class ScreenMenu implements Screen {
         myGdxGame.batch.begin();
 
         background.draw(myGdxGame.batch);
-        bird.draw(myGdxGame.batch);
         buttonStart.draw(myGdxGame.batch);
         buttonExit.draw(myGdxGame.batch);
         buttonShop.draw(myGdxGame.batch);
@@ -100,6 +97,5 @@ public class ScreenMenu implements Screen {
         buttonStart.dispose();
         buttonShop.dispose();
         logo.dispose();
-        bird.dispose();
     }
 }

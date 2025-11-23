@@ -113,9 +113,9 @@ public class ScreenGame implements Screen {
 
         myGdxGame.batch.end();
         // hitboxShow
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        bird.debugDraw(debugRenderer);
-        debugRenderer.end();
+       // debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+       // bird.debugDraw(debugRenderer);
+       // debugRenderer.end();
 
     }
 
