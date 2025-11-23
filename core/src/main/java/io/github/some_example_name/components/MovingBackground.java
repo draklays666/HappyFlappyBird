@@ -18,9 +18,6 @@ public class    MovingBackground {
         texture = new Texture(pathToTexture);
     }
 
-    public void changeBG(String pathToTexture) {
-        texture = new Texture(pathToTexture);
-    }
 
     public void move() {
         texture1X -= speed;

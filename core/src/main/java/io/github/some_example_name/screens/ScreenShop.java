@@ -30,7 +30,6 @@ public class ScreenShop implements Screen {
     Texture skin1;
     Texture skin2;
     Texture skin3;
-    private Bird Bird;
 
     public ScreenShop(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
